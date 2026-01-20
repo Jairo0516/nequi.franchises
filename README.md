@@ -87,7 +87,7 @@ mvn -Dspring-boot.run.profiles=postgres spring-boot:run
 
 
 
-# Con docker
+# Con docker (No comprobado por licencia :c)
 ```bash
 docker compose -f docker-compose.rds.yml up --build
 ```
