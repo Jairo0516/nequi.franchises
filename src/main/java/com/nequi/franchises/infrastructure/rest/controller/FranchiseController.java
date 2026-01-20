@@ -4,12 +4,14 @@ import com.nequi.franchises.application.usecases.FranchiseUseCases;
 import com.nequi.franchises.domain.model.Branch;
 import com.nequi.franchises.domain.model.Franchise;
 import com.nequi.franchises.domain.model.Product;
+import com.nequi.franchises.infrastructure.rest.dto.ApiResponse;
 import com.nequi.franchises.infrastructure.rest.dto.BranchResponse;
 import com.nequi.franchises.infrastructure.rest.dto.CreateBranchRequest;
 import com.nequi.franchises.infrastructure.rest.dto.CreateFranchiseRequest;
 import com.nequi.franchises.infrastructure.rest.dto.CreateProductRequest;
 import com.nequi.franchises.infrastructure.rest.dto.FranchiseResponse;
 import com.nequi.franchises.infrastructure.rest.dto.ProductResponse;
+import com.nequi.franchises.infrastructure.rest.dto.TopProductByBranchResponse;
 import com.nequi.franchises.infrastructure.rest.dto.UpdateNameRequest;
 import com.nequi.franchises.infrastructure.rest.dto.UpdateStockRequest;
 import jakarta.validation.Valid;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -122,8 +125,8 @@ public class FranchiseController {
 
     // 6) Top product by branch for a franchise
     @GetMapping("/{franchiseId}/top-products-by-branch")
-    public ResponseEntity<Object> topProductsByBranch(@PathVariable UUID franchiseId) {
-        return ResponseEntity.ok(useCases.getTopProductsByBranch(franchiseId));
+    public ApiResponse<List<TopProductByBranchResponse>> topProductsByBranch(@PathVariable UUID franchiseId) {
+        return ApiResponse.of(200, "OK", useCases.getTopProductsByBranch(franchiseId));
     }
 
     private FranchiseResponse toResponse(Franchise franchise) {
