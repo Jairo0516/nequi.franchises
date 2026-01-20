@@ -1,6 +1,5 @@
 package com.nequi.franchises.application.usecases;
 
-import com.nequi.franchises.application.dto.TopProductByBranch;
 import com.nequi.franchises.domain.exceptions.BusinessRuleException;
 import com.nequi.franchises.domain.exceptions.ConflictException;
 import com.nequi.franchises.domain.exceptions.NotFoundException;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
